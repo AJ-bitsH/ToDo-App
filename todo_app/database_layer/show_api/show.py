@@ -1,13 +1,12 @@
-from flask import Flask,request,Blueprint
-from todo_app import db
 from todo_app.models import Todo
+import time
 
-show = Blueprint('show', __name__)
-
-@show.route("/show", methods=["GET"])
-def dsiplaying():
+def fetch(list):
     todo_list = Todo.query.all()
-    dictionary = {}
     for item in todo_list:
-        dictionary[item.title] = item.complete
-    return dictionary
+        tuple = {}
+        tuple["uuid"]=(item.uuid)
+        tuple["title"]=(item.title)
+        tuple["status"]=(item.complete)
+        tuple["date"]=(time.ctime(item.date))
+        list.append(tuple)

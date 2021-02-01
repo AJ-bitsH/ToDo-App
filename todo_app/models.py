@@ -1,5 +1,7 @@
 from todo_app import db
 
 class Todo(db.Model):
-    title = db.Column(db.String, primary_key=True)
-    complete = db.Column(db.Boolean)
+    uuid = db.Column(db.String(80),primary_key=True)
+    title = db.Column(db.String(80))
+    complete = db.Column(db.String(20))
+    date = db.Column(db.Float)
