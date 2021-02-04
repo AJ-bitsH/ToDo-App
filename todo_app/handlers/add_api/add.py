@@ -10,5 +10,5 @@ def addition():
     to_add_title = request.get_json()["title"]
     new_todo = Todo(title=to_add_title, complete= "Pending")
     format(item=new_todo)  #business logic applied
-    insert(item=new_todo)  #entry added to db
+    insert(item=new_todo,to_add_title=to_add_title)  #entry added to db
     return "successfully added item"
