@@ -1,7 +1,4 @@
-from todo_app import db
-from todo_app.models import Todo
+from db.todo_app.todolist.models import Todo
 
-def insert(item,to_add_title):
-    if(bool(Todo.query.filter_by(title=to_add_title).first())==False):
-        db.session.add(item)
-        db.session.commit()
+def insert(item):
+    Todo.objects.create(title=item.title,complete=item.complete,date=item.date)

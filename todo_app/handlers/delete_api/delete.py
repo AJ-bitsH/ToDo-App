@@ -1,10 +1,11 @@
-from flask import request,Blueprint
-from todo_app.database_layer.delete_api.delete import remove
+from flask import Blueprint
+from todo_app.controllers.todo_controllers import delete_item
+from todo_app.models import construct
+from db.todo_app.todolist.models import Todo
 
 delete = Blueprint('delete', __name__)
 
-@delete.route("/delete/<string:todo_title>", methods=["DELETE"])
-def removing(todo_title):
-    #item = request.get_json()["title"]
-    remove(to_delete_title=todo_title)
-    return "succesfully deleted item"
+@delete.route("/delete/<string:id_no>", methods=["DELETE"])
+def removing(id_no):
+    item = delete_item(id_no=int(id_no))
+    return construct(item.id,item.title,item.complete,item.date)

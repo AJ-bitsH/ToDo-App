@@ -1,0 +1,33 @@
+response 
+{
+    todos:[{
+        "title" : "cleaning",
+        "status": "pending"
+    },{}]
+}
+
+path params vs key and values
+controllers(data manipulation here) & handlers(only exposed to users,chron jobs)
+status pending or complete
+queries in db layer
+post get contracts
+
+
+django:
+install new django app
+export django settings
+
+path parms vs query params
+
+factory pattern
+
+sqlalchemy vs django orm
+
+
+cleanup alchemy codes ->tickmark
+show functions combine ->tickmark
+json response everywhere ->tickmark (id and date display not working correctly)
+model datefield ->tickmark
+put id in queries instead of title,delete and stuff on id not title -> tickmark
+patch call pass status ->tickmark
+django queries advanced, study django orm queries

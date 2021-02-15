@@ -1,7 +1,6 @@
-from todo_app import db
-from todo_app.models import Todo
+from db.todo_app.todolist.models import Todo
 
-def remove(to_delete_title):
-    item = Todo.query.filter_by(title=to_delete_title).first()
-    db.session.delete(item)
-    db.session.commit()
+def remove(to_delete_id):
+    delete_item = Todo.objects.filter(id=to_delete_id).first()
+    delete_item.delete()
+    return delete_item

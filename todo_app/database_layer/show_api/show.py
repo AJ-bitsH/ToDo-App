@@ -1,30 +1,30 @@
-from todo_app.models import Todo,construct
+from todo_app.models import construct
+from db.todo_app.todolist.models import Todo
 import time
 
 def fetch(list):
-    todo_list = Todo.query.all()
+    todo_list = Todo.objects.all()
     for item in todo_list:
-        list.append(construct(item.uuid,item.title,item.complete,str(item.date)))
+        list.append(construct(item.id,item.title,item.complete,str(item.date)))
         
 
-def fetch_completed(list):
-    todo_list = Todo.query.filter_by(complete="Completed").all()
+def fetch_by_status(list,status):
+    todo_list = Todo.objects.filter(complete=status).all()
     for item in todo_list:
-        list.append(construct(item.uuid,item.title,item.complete,time.ctime(item.date)))
-
-
-def fetch_pending(list):
-    todo_list = Todo.query.filter_by(complete="Pending").all()
-    for item in todo_list:
-        list.append(construct(item.uuid,item.title,item.complete,time.ctime(item.date)))
+        list.append(construct(item.id,item.title,item.complete,str(item.date)))
 
 
 def fetch_details(todo_title):
-    item = Todo.query.filter_by(title=todo_title).first()
-    return (construct(item.uuid,item.title,item.complete,time.ctime(item.date)))
+    item = Todo.objects.filter(title=todo_title).first()
+    return (construct(item.id,item.title,item.complete,str(item.date)))
 
 
 def fetch_sorted(list):
-    todo_list = Todo.query.order_by(Todo.uuid).all()
+    todo_list = Todo.objects.order_by(Todo.date).all()
     for item in todo_list:
-        list.append(construct(item.uuid,item.title,item.complete,time.ctime(item.date)))
+        list.append(construct(item.id,item.title,item.complete,str(item.date)))
+
+def fetch_some(list,dict):
+    todo_list = Todo.objects.filter(complete=dict["complete"],title=dict["title"])
+    for item in todo_list:
+        list.append(construct(item.id,item.title,item.complete,time.ctime(item.date)))
