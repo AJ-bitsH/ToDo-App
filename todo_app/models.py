@@ -1,6 +1,3 @@
-
-
-
 def construct(id,title,complete,date):
     dict = {}
     dict["id"]=id

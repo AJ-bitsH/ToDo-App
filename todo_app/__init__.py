@@ -1,3 +1,6 @@
+import os
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'db.todo_app.todo_app.settings')
 import django
 django.setup()
 from flask import Flask

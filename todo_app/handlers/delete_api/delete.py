@@ -7,5 +7,5 @@ delete = Blueprint('delete', __name__)
 
 @delete.route("/delete/<string:id_no>", methods=["DELETE"])
 def removing(id_no):
-    item = delete_item(id_no=int(id_no))
-    return construct(item.id,item.title,item.complete,item.date)
+    return delete_item(id_no=int(id_no))
+    

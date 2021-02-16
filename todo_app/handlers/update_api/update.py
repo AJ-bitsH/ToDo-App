@@ -6,7 +6,7 @@ update = Blueprint('update', __name__)
 
 @update.route("/update",methods=["PATCH"])
 def changing():
-    id_no = request.get_json()["title"]
+    id_no = request.get_json()["id"]
     to_status = request.get_json()["change_to"]
     item = update_item(id_no=id_no,change_to=to_status)
     return construct(item.id,item.title,item.complete,item.date)

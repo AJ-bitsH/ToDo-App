@@ -19,11 +19,6 @@ def fetch_details(todo_title):
     return (construct(item.id,item.title,item.complete,str(item.date)))
 
 
-def fetch_sorted(list):
-    todo_list = Todo.objects.order_by(Todo.date).all()
-    for item in todo_list:
-        list.append(construct(item.id,item.title,item.complete,str(item.date)))
-
 def fetch_some(list,dict):
     todo_list = Todo.objects.filter(complete=dict["complete"],title=dict["title"])
     for item in todo_list:
